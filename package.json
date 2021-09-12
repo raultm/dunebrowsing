@@ -1,0 +1,22 @@
+{
+  "name": "dunebrowsing",
+  "version": "1.0.0",
+  "description": "Tests to checkout service workers funcionalities",
+  "main": "index.js",
+  "scripts": {
+    "start2": "php -S localhost:3030",
+    "start": "http-server -a localhost -p 3030 -c-1",
+    "cy:run": "cypress run",
+    "cy:ui": "cypress open",
+    "test": "start-server-and-test start http://localhost:3030 cy:run",
+    "test:ui": "start-server-and-test start http://localhost:3030 cy:ui",
+    "test2": "npx cypress open"
+  },
+  "author": "raultm",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^7.7.0",
+    "http-server": "^13.0.1",
+    "start-server-and-test": "^1.14.0"
+  }
+}

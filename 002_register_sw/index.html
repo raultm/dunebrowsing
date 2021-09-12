@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Offline</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <h2>Register SW</h2>
+  <p>click the execute code to register sw</p>
+  <button id="register" onclick="eval(document.getElementById('register-sw').value);">Register</button>
+  <br /><br />
+  <textarea id="register-sw" cols="100" rows="14">
+if (!('serviceWorker' in navigator)) {
+  console.log('Service Worker NOT supported!');
+}
+
+navigator.serviceWorker.register(currentFolder + 'sw.js').then(function (registration) {
+    console.log('Service Worker registration successful with scope: ', registration.scope);
+    updateSWStatus()
+}).catch(function (err) {
+    console.error(err);
+});
+  </textarea>
+
+  <h2>Unregister SW</h2>
+  <p>click the execute code to unregister sw</p>
+  <button id="unregister" onclick="eval(document.getElementById('unregister-sw').value);">Unregister SW</button>
+  <br /><br />
+  <textarea id="unregister-sw" cols="100" rows="10">
+navigator.serviceWorker.getRegistration(currentFolder + "sw.js").then(function (reg) {
+  console.log("Unregistering...");
+  return reg.unregister();
+}).then(function (res) {
+  console.log("Unregistered", res);
+  updateSWStatus()
+}).catch(function(error) {
+  console.error(error);
+});
+  </textarea>
+
+  <h2>Fetch</h2>
+  <input id="fetch-url" value="index.html"/>
+  <button id="fetch" onclick="fetchUrl()">Fetch</button>
+  <br /><br />
+  <textarea id="fetch-response" cols="100" rows="10">
+
+  </textarea>
+  
+
+  <aside>
+    <ul>
+      <li id="network-status"></li>
+      <li id="sw-status"></li>
+    </ul>
+  </aside>
+
+  <script src="./offline.js"></script>
+</body>
+</html>
