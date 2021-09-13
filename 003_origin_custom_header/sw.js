@@ -56,18 +56,20 @@ const MAX_WAIT = 300; // If network responds slower than 100 ms, respond with ca
 
 //https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker
 self.addEventListener('fetch', function(event) {
-event.respondWith(
-    caches.open(CACHE_NAME).then(function(cache) {
-    return cache.match(event.request).then(function (response) {
-        if(response){
-        return appendCustomOriginHeader(response, 'sw')
-        }
-        return fetch(event.request).then(function(response) {
-            return appendCustomOriginHeader(response, 'server')
-        });
-    });
-    })
-);
+    event.respondWith(
+        caches.open(CACHE_NAME).then(function(cache) {
+            return cache.match(event.request).then(function (response) {
+                // From Cache
+                if(response){
+                    return appendCustomOriginHeader(response, 'sw')
+                }
+                // Not Cached, trying server...
+                return fetch(event.request).then(function(response) {
+                    return appendCustomOriginHeader(response, 'server')
+                });
+            });
+        })
+    );
 });
 
 function appendCustomOriginHeader(response, origin)
