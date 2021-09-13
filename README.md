@@ -18,8 +18,8 @@ Run tests with UI. Boot up localhost server and launch Cypress UI
 
 ## Evolution
 
-- 002\. Register a Service Worker and test *fetch* funcionality in offline mode
-- 001\. Original tests of Cypress Offline Recipe
+- [002](docs/002.md)\. Register a Service Worker and test *fetch* funcionality in offline mode
+- [001](docs/001.md)\. Original tests of Cypress Offline Recipe
 
 ## Problems encountered
 
