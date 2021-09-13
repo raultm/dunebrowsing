@@ -16,8 +16,16 @@ Run tests with UI. Boot up localhost server and launch Cypress UI
 
 ``` npm run test:ui```
 
+## Want to add another Evolution Step
+1. Create a doc in docs/XXX.md
+2. Add to README
+3. Test the behaviour
+4. Write the code
+5. Push or PR
+
 ## Evolution
 
+- [003](docs/003.md)\. Add custom header to identify response from SW or from Server
 - [002](docs/002.md)\. Register a Service Worker and test *fetch* funcionality in offline mode
 - [001](docs/001.md)\. Original tests of Cypress Offline Recipe
 
